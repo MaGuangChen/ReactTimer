@@ -1,0 +1,16 @@
+//如果要被引入的開頭都用_
+//下底線，會告訴scss這是要被引入的而不是直接印
+.top-bar {
+    background-color: $nav-background;
+    ul {
+        background-color: $nav-background;
+    }
+    .menu-text {
+        color: $nav-text-color;
+    }
+    //這樣才不會選到不是我們要選的地方 >是next selector選擇器
+    .menu > .menu-text > a{
+        display: inline;
+        padding: 5px;    
+    }
+}

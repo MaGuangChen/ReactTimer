@@ -1,0 +1,6 @@
+//Colors 顏色們
+$grey: #333333;
+// Nav bar colors
+//會這樣用是因為我們可以更新nav bar背景顏色而不去更改既定的grey變數
+$nav-background: $grey;
+$nav-text-color:white;
