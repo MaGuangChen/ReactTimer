@@ -1,6 +1,11 @@
 //Colors 顏色們
 $grey: #333333;
-// Nav bar colors
+// Nav component styles
 //會這樣用是因為我們可以更新nav bar背景顏色而不去更改既定的grey變數
 $nav-background: $grey;
 $nav-text-color:white;
+
+//Clock component styles
+$clock-bg-color: #B5D0E2;
+$clock-border-color: #2099E8;
+$clock-text-color: white;

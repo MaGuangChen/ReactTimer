@@ -1,11 +1,11 @@
 import React from 'react';
-
+import Clock from 'Clock';
 var Countdown = React.createClass({
    
     render: function(){
         return (
             <div>
-              <p>Countdown Component試印</p>
+              <Clock totalSeconds={129}/>
             </div>
         );
     }
