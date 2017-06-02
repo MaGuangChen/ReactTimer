@@ -17,7 +17,7 @@ let Navigation = ()=>{
                     <IndexLink to="/" activeClassName="active-link">計時器Timer</IndexLink>
                   </li>
                   <li>
-                    <Link to="/" activeClassName="active-link">倒數計時器Countdown</Link>
+                    <Link to="/countdown" activeClassName="active-link">倒數計時器Countdown</Link>
                   </li>
               </ul>
           </div>
