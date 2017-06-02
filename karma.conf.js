@@ -6,9 +6,9 @@ module.exports = function (config) {
       browsers: ['Chrome'],//要測試的真實brower
       singleRun: true,//單一測試
       frameworks: ['mocha'],//我們要使用的測試框架
-      files: ['app/tests/**.test.jsx'],//我們要測試的檔案，兩個星號的意思是只要在這個資料夾內的任何檔案
+      files: ['app/tests/**/*.test.jsx'],//我們要測試的檔案，兩個星號的意思是只要在這個資料夾內的任何檔案
       preprocessors: {
-          'app/tests/**.test.jsx' : ['webpack','sourcemap']
+          'app/tests/**/*.test.jsx' : ['webpack','sourcemap']
       },//Preprocessor 預處理器，與檔案相似是可以定義測試的
       reporters: ['mocha'],
       client: {
