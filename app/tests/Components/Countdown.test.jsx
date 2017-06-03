@@ -39,10 +39,19 @@ describe("Countdown component", () => {
        });
        describe("倒數計時永不顯示負數時間",()=>{
            it("測試是否在startTimer method中的this.setState是否有用",(done)=>{
+               //先render到文件內
                let countdown = TestUtils.renderIntoDocument(<Countdown />);
+               //假設user輸入的值為-1
                countdown.handleSetCountdown(-1);
+               //參數值傳入後我們預期state.count是-1 state.countdownStatus
                expect(countdown.state.count).toBe(-1);
                expect(countdown.state.countdownStatus).toBe('start');
+               //一秒後雖然state.count為-2但由於我們的三元運算子設定下，count傳遞進來只要是負數則會為0
+               setTimeout(()=>{
+                   //在1001毫秒後，測試state.count是否為0
+                   expect(countdown.state.count).toBe(0);
+                   done();//宣告異步執行
+               },1001);
            });      
        });
 
