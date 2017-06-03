@@ -11,7 +11,7 @@ let Clock = React.createClass({
   },
    //宣告新的method
   formatSeconds: function (totalSeconds) {
-     //參數totalSeconds是傳進來的總秒數
+     //參數totalSeconds是傳進來的props，代表總秒數
     //seconds等於參數除以60的餘數
     let seconds = totalSeconds % 60;
      //minutes 為整除後的參數
