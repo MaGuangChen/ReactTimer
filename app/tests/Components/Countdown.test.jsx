@@ -37,6 +37,7 @@ describe("Countdown component", () => {
 
             });
        });
+       //異步測試
        describe("倒數計時永不顯示負數時間",()=>{
            it("測試是否在startTimer method中的this.setState是否有用",(done)=>{
                //先render到文件內

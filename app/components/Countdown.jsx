@@ -10,7 +10,9 @@ var Countdown = React.createClass({
     getInitialState: function(){
       return {
           count:0,
-          countdownStatus: '停止倒數'//應該要有"停止倒數","暫停","start"，預設為停止倒數  
+          //countdownStatus應該要有"停止倒數","暫停","start"，預設為停止倒數  
+          //用狀態為條件，進而控制render的秒數
+          countdownStatus: '停止倒數'
     };
 },
    //component life cycle method，用以觀察state的變更，並作出回應
