@@ -41,6 +41,14 @@ var Countdown = React.createClass({
              }
          }
   },
+  //在此component第一次render時，這個method會被自動執行
+  componentWillMount: function(){
+
+  },
+  //在此component從render中被移除時時，這個method會被自動執行
+  componentWillUnMount: function(){
+      console.log('componentDidUnmount');
+  },
   //當state被更新為start時執行的函數ˋ
   startTimer: function(){
       //setTimeOut這個method 將會在一定的時間後執行一次某個我們選定的函式
