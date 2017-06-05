@@ -29,7 +29,7 @@ describe("Controls component",()=>{
 
        it("countdownStatus 如果值為暫停那應該要render出start按鈕",()=>{
           //先將Controls render到文件上，確定user看到的是對的東西被render
-          let controls = TestUtils.renderIntoDocument(<Controls countdownStatus="暫停"/>);
+          let controls = TestUtils.renderIntoDocument(<Controls countdownStatus="paused"/>);
           //這個el為已經被controls component已經被render的部分
           var $el = $(ReactDOM.findDOMNode(controls));
           //尋找dom裡面的內容含有暫停的button tag
