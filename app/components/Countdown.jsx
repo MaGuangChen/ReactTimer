@@ -107,6 +107,7 @@ var Countdown = React.createClass({
         //技術上我們可以使用componentWillReceviceProps來控制state.count
         return (
             <div>
+              <h1 className="page-title">倒數計時</h1>
               <Clock totalSeconds={count}/>
               {renderControlArea()}
             </div>

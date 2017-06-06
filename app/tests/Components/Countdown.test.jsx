@@ -53,7 +53,55 @@ describe("Countdown component", () => {
                    expect(countdown.state.count).toBe(0);
                    done();//宣告異步執行
                },1001);
-           });      
-       });
+           }); 
 
+           it('在點擊暫停按鈕後，state為paused的情況下倒數中的秒數要被暫停',(done)=>{
+               //第一步一樣是要將component render上文件才能做後續測試
+               let countdown = TestUtils.renderIntoDocument(<Countdown />);
+
+                //下面這個等於user輸入了3並開始了setInterval，暫停按鈕出現
+                countdown.handleSetCountdown(3);
+
+                //Controls component的method用來改變Countdown state的
+                //在這邊叫的意思等於user按下了暫停按鈕，並暫停了setInterval
+                //所以秒數要停留在3才對
+                countdown.handleStatusChange('paused');
+                //一秒後檢查是否停留在三秒且狀態為paused
+                setTimeout(()=>{
+                   expect(countdown.state.count).toBe(3);
+                   expect(countdown.state.countdownStatus).toBe('paused');
+                   //因為我們用了setTimeout或是setInterval等這種時間函式時，
+                   //他們將會變成異步處理，所以要新增call back，
+                   //也就是在it function的第二個參數arrow function中加入參數
+                   //並在setTimeout method執行完後呼叫
+                   done();
+                },1001);
+            });
+
+            it('在點擊重置時間按鈕時，一切都會回歸原狀',(done)=>{
+               //第一步一樣是要將component render上文件才能做後續測試
+               let countdown = TestUtils.renderIntoDocument(<Countdown />);
+
+                //下面這個等於user輸入了3並開始了setInterval，暫停按鈕出現
+                countdown.handleSetCountdown(3);
+
+                //Controls component的method用來改變Countdown state的
+                //在這邊叫的意思等於user按下了暫停按鈕，並暫停了setInterval
+                //所以秒數要停留在3才對
+                countdown.handleStatusChange('stopped');
+                //一秒後檢查是否停留在三秒且狀態為paused
+                setTimeout(()=>{
+                   expect(countdown.state.count).toBe(0);
+                   expect(countdown.state.countdownStatus).toBe('stopped');
+                   //因為我們用了setTimeout或是setInterval等這種時間函式時，
+                   //他們將會變成異步處理，所以要新增call back，
+                   //也就是在it function的第二個參數arrow function中加入參數
+                   //並在setTimeout method執行完後呼叫
+                   done();
+                },1001);
+            });
+
+
+       });
+//-------------------------------最外層
 });
