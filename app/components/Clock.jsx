@@ -1,4 +1,7 @@
 import React from 'react';
+//Clock component是專門負責處理總秒數
+//並將總秒數轉為分鐘與秒的格式
+
 
 let Clock = React.createClass({
   //設定預設props，當沒收到props傳遞時的預設
