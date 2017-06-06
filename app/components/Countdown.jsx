@@ -17,7 +17,7 @@ var Countdown = React.createClass({
     };
 },
    //component life cycle method，用以觀察state的變更，並作出回應
-   //componentDidUpdate 會在每次component得props或state被更新時自動呼叫
+   //componentDidUpdate 會在每次component得props或state被更新後自動呼叫
   componentDidUpdate : function(prevProps,prevState){
         //總之就是每次props或state被更新時做一次檢查狀態的動作，
         //如果新狀態跟先前版本狀態不一樣，那就執行switch method
@@ -32,7 +32,7 @@ var Countdown = React.createClass({
                      this.setState({count:0});//則將state.count的值歸零
                  case 'paused' :
                      //停止名為timer的method
-                     clearInterval(this.timer)
+                     clearInterval(this.timer)//這個clearInterval是專門用來暫停setInterval() method的，但不會重新計算喔
                      this.timer = undefined;
                      break;
                  //因為case stopped沒有用break，
@@ -41,13 +41,11 @@ var Countdown = React.createClass({
              }
          }
   },
-  //在此component第一次render時，這個method會被自動執行
-  componentWillMount: function(){
-
-  },
-  //在此component從render中被移除時時，這個method會被自動執行
-  componentWillUnMount: function(){
-      console.log('componentDidUnmount');
+  //在此component從dom中被移除時，這個method會被自動執行
+  componentWillUnmount: function(){
+      //當component從dom中被移除時就暫停startTimer內的timer method
+      clearInterval(this.timer);
+      this.timer = undefined;
   },
   //當state被更新為start時執行的函數ˋ
   startTimer: function(){
@@ -63,6 +61,10 @@ var Countdown = React.createClass({
              count: newCount >= 0 ? newCount : 0
              //如果newCount大於等於0則正常顯示newCount的值，如果為false則為0
          });
+         //如果變數newCount為0了，那我們就沒有倒數的必要了喔
+         if(newCount === 0){
+             this.setState({countdownStatus: 'stopped'});
+         }
       },1000);
   },
     //更新state，也就是CountdownForm表單被提交（submit）時
@@ -102,6 +104,7 @@ var Countdown = React.createClass({
               return <CountdownForm onSetCountdown={this.handleSetCountdown}/>
             }
         };
+        //技術上我們可以使用componentWillReceviceProps來控制state.count
         return (
             <div>
               <Clock totalSeconds={count}/>
