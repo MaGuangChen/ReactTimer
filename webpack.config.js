@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+var path = require('path');//不用install喔，node的核心模組
+
 
 module.exports = {
   entry: [
@@ -44,6 +46,13 @@ module.exports = {
         exclude: /(node_modules|bower_components)/
       }
     ]
+  },
+  //套用套件來找想要load的scss style
+  sassLoader:{
+     includePaths: [
+       //dirname前的下底線一定要用兩個喔，不然直接crash掉
+       path.resolve(__dirname,'./node_modules/foundation-sites/scss')
+     ]
   },
   devtool: 'cheap-module-eval-source-map'
 };

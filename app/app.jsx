@@ -4,8 +4,7 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 var Main = require('Main');
 import Timer from 'Timer';
 import Countdown from 'Countdown';
-// Load foundation讀取 foundation css
-require('style!css!foundation-sites/dist/foundation.min.css')
+// Load foundation讀取 foundation
 $(document).foundation();
 
 // App css的樣式要求

@@ -6,6 +6,9 @@ let CountdownForm = React.createClass({
         e.preventDefault();
         //將user輸入的秒數字串接收，長這樣的：'123'
         let strSeconds = this.refs.seconds.value;//我們現在還只有秒數字串所以用這個變數來存
+        
+        console.log('輸入count的次數',$('input').length);
+        
         //正則表達式，regular expression
         //條件是要strSeconds變數只有0~9，像這樣：'0293'，星號的意思是0~9的數字可以出現無數次
         if(strSeconds.match(/^[0-9]*$/)){
