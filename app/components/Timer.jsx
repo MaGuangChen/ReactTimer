@@ -9,12 +9,12 @@ var Timer = React.createClass({
         timerStatus: 'stopped'//如果一開始不是stopped的話就會直接開始換囉
      }; 
    },
-   //每當state被更新時
+  //每當state被更新時，進行狀態判定
   componentDidUpdate: function(prevProps,prevState) {
       if(this.state.timerStatus !== prevState.timerStatus) {
           switch (this.state.timerStatus){
               case 'start' :
-                  this.handelStart();
+                  this.handleStart();
                   break;
               case 'stopped' :
                   this.setState({count: 0});
@@ -25,10 +25,12 @@ var Timer = React.createClass({
           }
       }
   },
+  //當component被卸載時，停止setInterval
   componentWillUnmount: function(){
      clearInterval(this.timer);
   },
-  handelStart: function(){
+  
+  handleStart: function(){
       this.timer = setInterval( ()=>{
           this.setState({
                count: this.state.count + 1
@@ -37,7 +39,7 @@ var Timer = React.createClass({
       },1000);
   },
    //這個method 用來更新status喔，有三種status: start、stopped、paused
-   handelStatusChange: function(newTimerStatus){
+   handleStatusChange: function(newTimerStatus){
      this.setState({
         timerStatus: newTimerStatus
      })
@@ -49,7 +51,7 @@ var Timer = React.createClass({
             <div>
              <h1 className="page-title">計時器應用</h1>
               <Clock totalSeconds={count}/>
-              <Controls countdownStatus={timerStatus} onStatusChange={this.handelStatusChange}/>
+              <Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
             </div>
         );
     }
